@@ -8,10 +8,6 @@ namespace DataLibrary.DataAccess
 {
     public partial class NorthwindContext : DbContext
     {
-        public NorthwindContext(DbContextOptions options) : base(options)
-        {
-
-        }
         public NorthwindContext(DbContextOptions<NorthwindContext> options)
             : base(options)
         {
