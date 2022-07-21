@@ -1,4 +1,5 @@
-﻿using DataLibrary.Repository.EmployeeRep;
+﻿using DataLibrary.Repository.CategoryRep;
+using DataLibrary.Repository.EmployeeRep;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace DataLibrary.BusinessLogic
     public interface IUnitOfWork : IDisposable
     {
         IEmployeeRepository Employees { get; }
+        ICategoryRepository Categories { get; }
         Task Complete();
     }
 }

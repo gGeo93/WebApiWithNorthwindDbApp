@@ -1,4 +1,5 @@
 ﻿using DataLibrary.DataAccess;
+using DataLibrary.Repository.CategoryRep;
 using DataLibrary.Repository.EmployeeRep;
 using System;
 using System.Collections.Generic;
@@ -15,8 +16,10 @@ namespace DataLibrary.BusinessLogic
         {
             this.context = context;
             Employees = new EmployeeRepository(this.context);
+            Categories = new CategoryRepository(this.context);
         }
         public IEmployeeRepository Employees { get; }
+        public ICategoryRepository Categories { get; }
 
         public async Task Complete()
         {
