@@ -15,12 +15,24 @@ public class UnitOfWork : IUnitOfWork
         Customers = new CustomerRepository(this.context);
         CustomersDemographic = new CustomerDemographicRepository(this.context);
         OrderDetails = new OrderDetailsRepository(this.context);
+        Orders = new OrderRepository(this.context);
+        Products = new ProductRepository(this.context);
+        Regions = new RegionRepository(this.context);
+        Shippers = new ShipperRepository(this.context);
+        Suppliers = new SupplierRepository(this.context);
+        Territories = new TerritoryRepository(this.context);
     }
     public IEmployeeRepository Employees { get; }
     public ICategoryRepository Categories { get; }
     public ICustomerRepository Customers { get; }
     public ICustomerDemographicRepository CustomersDemographic { get; }
     public IOrderDetailsRepository OrderDetails { get; }
+    public IOrderRepository Orders { get; }
+    public IProductRepository Products { get; }
+    public IRegionRepository Regions { get; }
+    public IShipperRepository Shippers { get; }
+    public ISupplierRepository Suppliers { get; }
+    public ITerritoryRepository Territories { get; }
 
     public async Task Complete()
     {
