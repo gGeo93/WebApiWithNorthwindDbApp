@@ -16,15 +16,32 @@ namespace WebApiWithNorthwindDb.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<EmployeeDisplayModel>>> GetAllEmployees() 
+        public async Task<ActionResult<IEnumerable<EmployeeDisplayModel>>> GetAllEmployees()
         {
             var employees = await unitOfWork.Employees.GetAll();
             List<EmployeeDisplayModel> employeesDisplaying = new List<EmployeeDisplayModel>();
-            foreach (var emp in employees) 
+            foreach (var emp in employees)
             {
-                employeesDisplaying.Add(new EmployeeDisplayModel { LastName = emp.LastName, FirstName = emp.FirstName }); 
+                employeesDisplaying.Add(new EmployeeDisplayModel { LastName = emp.LastName, FirstName = emp.FirstName });
             }
             return Ok(employeesDisplaying);
+        }
+        [HttpGet("{numberOfAddress}")]
+        public async Task<ActionResult<EmployeeDisplayModel>> GetEmployeeByNumberOfaddress(int numberOfAddress) 
+        { 
+            var employee = await unitOfWork.Employees.GetEmployeeByNumberOfAddress(numberOfAddress);
+            
+            if (employee == null) 
+            {
+                return NotFound("There is no Employee with this address number.");
+            }
+
+            EmployeeDisplayModel employeeDisplaying = new EmployeeDisplayModel()
+            {
+                LastName = employee.LastName,
+                FirstName = employee.FirstName
+            };
+            return Ok(employeeDisplaying);
         }
     }
 }

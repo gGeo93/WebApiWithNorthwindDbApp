@@ -13,4 +13,9 @@ public class EmployeeRepository : Repository<Employee>, IEmployeeRepository
     }
 
     public NorthwindContext EmployeeContext => context as NorthwindContext;
+
+    public async Task<Employee?> GetEmployeeByNumberOfAddress(int numberOfAddress)
+    {
+        return await EmployeeContext.Set<Employee>().FirstOrDefaultAsync(emp => emp.Address.Contains(numberOfAddress.ToString()));
+    }
 }
