@@ -27,9 +27,9 @@ namespace WebApiWithNorthwindDb.Controllers
             return Ok(employeesDisplaying);
         }
         [HttpGet("{numberOfAddress}")]
-        public async Task<ActionResult<EmployeeDisplayModel>> GetEmployeeByNumberOfaddress(int numberOfAddress) 
+        public ActionResult<EmployeeDisplayModel> GetEmployeeByNumberOfaddress(int numberOfAddress) 
         { 
-            var employee = await unitOfWork.Employees.GetEmployeeByNumberOfAddress(numberOfAddress);
+            var employee = unitOfWork.Employees.GetEmployeeByNumberOfAddress(numberOfAddress);
             
             if (employee == null) 
             {

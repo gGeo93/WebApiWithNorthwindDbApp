@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 public class EmployeeRepository : Repository<Employee>, IEmployeeRepository
@@ -14,8 +16,20 @@ public class EmployeeRepository : Repository<Employee>, IEmployeeRepository
 
     public NorthwindContext EmployeeContext => context as NorthwindContext;
 
-    public async Task<Employee?> GetEmployeeByNumberOfAddress(int numberOfAddress)
+    public Employee GetEmployeeByNumberOfAddress(int numberOfAddress)
     {
-        return await EmployeeContext.Set<Employee>().FirstOrDefaultAsync(emp => emp.Address.Contains(numberOfAddress.ToString()));
+        string addressTextNumber = numberOfAddress.ToString();
+        Employee employee = EmployeeContext.Set<Employee>().FirstOrDefault(emp => emp.Address.Contains(addressTextNumber));
+        if (employee == null) 
+        {
+            return null;
+        }
+        string address = employee.Address;
+        string[] addressPropertySplit = address.Split(' ');
+        if (addressPropertySplit == null || addressPropertySplit[0] == null || addressPropertySplit[0] != addressTextNumber) 
+        {
+            return null;
+        }
+        return employee;
     }
 }

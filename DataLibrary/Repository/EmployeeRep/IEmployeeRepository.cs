@@ -7,5 +7,5 @@ using System.Threading.Tasks;
 
 public interface IEmployeeRepository : IRepository<Employee>
 {
-    Task<Employee> GetEmployeeByNumberOfAddress(int numberOfAddress);
+    Employee GetEmployeeByNumberOfAddress(int numberOfAddress);
 }
