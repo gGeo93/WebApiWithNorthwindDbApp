@@ -5,9 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataLibrary.Repository.EmployeeRep
+public interface IEmployeeRepository : IRepository<Employee>
 {
-    public interface IEmployeeRepository : IRepository<Employee>
-    {
-    }
 }

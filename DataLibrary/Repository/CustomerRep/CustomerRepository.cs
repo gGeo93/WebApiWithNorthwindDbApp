@@ -7,13 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public class CategoryRepository : Repository<Category>, ICategoryRepository
+namespace DataLibrary.Repository;
+
+public class CustomerRepository : Repository<Customer>, ICustomerRepository
 {
     private readonly NorthwindContext context;
-    public CategoryRepository(NorthwindContext context) : base(context)
+    public CustomerRepository(NorthwindContext context) : base(context)
     {
         this.context = context;
     }
 
-    public NorthwindContext Categories => context as NorthwindContext;
+    NorthwindContext CustomerContext => context as NorthwindContext;    
 }

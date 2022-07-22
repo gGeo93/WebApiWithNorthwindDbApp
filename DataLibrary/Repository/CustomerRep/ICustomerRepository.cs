@@ -5,6 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public interface ICategoryRepository : IRepository<Category>
+public interface ICustomerRepository : IRepository<Customer>
 {
 }

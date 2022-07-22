@@ -1,6 +1,3 @@
-using DataLibrary.Repository.CategoryRep;
-using DataLibrary.Repository.EmployeeRep;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
