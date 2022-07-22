@@ -13,10 +13,14 @@ public class UnitOfWork : IUnitOfWork
         Employees = new EmployeeRepository(this.context);
         Categories = new CategoryRepository(this.context);
         Customers = new CustomerRepository(this.context);
+        CustomersDemographic = new CustomerDemographicRepository(this.context);
+        OrderDetails = new OrderDetailsRepository(this.context);
     }
     public IEmployeeRepository Employees { get; }
     public ICategoryRepository Categories { get; }
     public ICustomerRepository Customers { get; }
+    public ICustomerDemographicRepository CustomersDemographic { get; }
+    public IOrderDetailsRepository OrderDetails { get; }
 
     public async Task Complete()
     {
