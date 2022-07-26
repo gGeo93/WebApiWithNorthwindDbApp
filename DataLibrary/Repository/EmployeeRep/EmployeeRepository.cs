@@ -16,20 +16,36 @@ public class EmployeeRepository : Repository<Employee>, IEmployeeRepository
 
     public NorthwindContext EmployeeContext => context as NorthwindContext;
 
-    public Employee GetEmployeeByNumberOfAddress(int numberOfAddress)
+    public async Task<IEnumerable<Employee>> GetEmployeesOrderByWorkExperience(bool descending)
     {
-        string addressTextNumber = numberOfAddress.ToString();
-        Employee employee = EmployeeContext.Set<Employee>().FirstOrDefault(emp => emp.Address.Contains(addressTextNumber));
-        if (employee == null) 
+        if (descending)
         {
-            return null;
+            return await context.Set<Employee>().OrderByDescending(emp => emp.HireDate).ToListAsync();
         }
-        string address = employee.Address;
-        string[] addressPropertySplit = address.Split(' ');
-        if (addressPropertySplit == null || addressPropertySplit[0] == null || addressPropertySplit[0] != addressTextNumber) 
+        else 
         {
-            return null;
+            return await context.Set<Employee>().OrderBy(emp => emp.HireDate).ToListAsync();
         }
-        return employee;
+    }
+    public async Task<IEnumerable<Employee>> GetEmployeesOrderByAge(bool descending)
+    {
+        if (descending)
+        {
+            return await context.Set<Employee>().OrderByDescending(emp => emp.BirthDate).ToListAsync();
+        }
+        else
+        {
+            return await context.Set<Employee>().OrderBy(emp => emp.BirthDate).ToListAsync();
+        }
+    }
+
+    public async Task<IEnumerable<Employee>> GetEmployeesOrders()
+    {
+        return await context.Set<Employee>().Include(ord => ord.Orders).ToListAsync();
+    }
+
+    public async Task<Employee?> SearchEmployee(Employee employee)
+    {
+       return await context.Set<Employee>().FirstOrDefaultAsync(e => e.LastName == employee.LastName && e.FirstName == employee.FirstName && e.Title == employee.Title);
     }
 }

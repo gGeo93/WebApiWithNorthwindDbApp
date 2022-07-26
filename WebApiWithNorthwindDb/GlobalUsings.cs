@@ -1,2 +1,4 @@
-﻿global using DataLibrary.DataAccess;
-global using DataLibrary.Repository;
+﻿global using DataAccessLibrary;
+global using WebApiWithNorthwindDb.Controllers;
+
+
