@@ -1,4 +1,4 @@
-﻿public interface IOrdersDisplay
+﻿public interface IOrdersCommitedPerEmployeeDisplay
 {
     string? OrderDate { get; set; }
     string? RequiredDate { get; set; }

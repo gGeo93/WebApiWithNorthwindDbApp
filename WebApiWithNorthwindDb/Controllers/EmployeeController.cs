@@ -98,7 +98,7 @@ namespace WebApiWithNorthwindDb.Controllers
 
                 for (int i = 0; i < employeesDisplaying.Count; i++)
                 {
-                    employeesDisplaying[i].Orders.Add(new OrdersDisplay
+                    employeesDisplaying[i].Orders.Add(new OrdersCommitedPerEmployeeDisplay
                     {
                         OrderDate = Orders[i].OrderDate.Value.ToShortDateString(),
                         RequiredDate = Orders[i].RequiredDate.Value.ToShortDateString(),

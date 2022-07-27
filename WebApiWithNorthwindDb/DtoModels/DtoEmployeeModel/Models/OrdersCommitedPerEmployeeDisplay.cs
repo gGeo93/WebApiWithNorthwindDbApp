@@ -1,4 +1,4 @@
-﻿public class OrdersDisplay : IOrdersDisplay
+﻿public class OrdersCommitedPerEmployeeDisplay : IOrdersCommitedPerEmployeeDisplay
 {
     public string? OrderDate { get; set; }
     public string? RequiredDate { get; set; }
