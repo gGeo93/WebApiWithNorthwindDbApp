@@ -1,7 +1,6 @@
 ﻿public interface IShipInformation
 {
-    int? ShipVia { get; set; }
-    string CompanyName { get; set; }
+    ShipBasedOrder ShipBasedOrder { get; set; }
     string? ShipName { get; set; }
     string? ShipAddress { get; set; }
     string? ShipCity { get; set; }

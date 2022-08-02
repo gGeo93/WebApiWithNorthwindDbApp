@@ -40,6 +40,10 @@ namespace DataLibrary.Repository
             return await context.Set<TEntity>().Where(expression).ToListAsync();
         }
 
+        public TEntity Find(Expression<Func<TEntity, bool>> expression) 
+        {
+            return context.Set<TEntity>().FirstOrDefault(expression);
+        }
 
         public void Remove(TEntity entity)
         {

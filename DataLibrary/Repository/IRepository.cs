@@ -12,6 +12,7 @@ namespace DataLibrary.Repository
         Task<IEnumerable<TEntity>> GetAll();
         Task<TEntity> Get(int id);
         Task<IEnumerable<TEntity>> FindAll(Expression<Func<TEntity,bool>> expression);
+        TEntity Find(Expression<Func<TEntity, bool>> expression);
 
         Task Add(TEntity entity);
         Task AddRange(IEnumerable<TEntity> entities);
