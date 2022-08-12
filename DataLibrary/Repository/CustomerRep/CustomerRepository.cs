@@ -1,4 +1,5 @@
-﻿using DataLibrary.DataAccess;
+﻿using DataAccsessLibrary.Models;
+using DataLibrary.DataAccess;
 using DataLibrary.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -6,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static ICustomerRepository;
 
 namespace DataLibrary.Repository;
 
@@ -17,5 +19,11 @@ public class CustomerRepository : Repository<Customer>, ICustomerRepository
         this.context = context;
     }
 
-    NorthwindContext CustomerContext => context as NorthwindContext;    
+    NorthwindContext CustomerContext => context as NorthwindContext;
+
+    public IQueryable<TurnoverOfEachCustomer> GetTurnoverByCustomer()
+    {
+        var result = context.TurnoverOfEachCustomers.OrderByDescending(t => t.Turnover);
+        return result;
+    }
 }

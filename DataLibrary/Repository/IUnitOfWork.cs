@@ -9,6 +9,7 @@ public interface IUnitOfWork : IDisposable
     IEmployeeRepository Employees { get; }
     ICategoryRepository Categories { get; }
     ICustomerRepository Customers { get; }
+    ISpRepository TurnoverPerCustomer { get; }
     ICustomerDemographicRepository CustomersDemographic { get; }
     IOrderDetailsRepository OrderDetails { get; }
     IOrderRepository Orders { get; }

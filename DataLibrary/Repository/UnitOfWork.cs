@@ -21,6 +21,7 @@ public class UnitOfWork : IUnitOfWork
         Shippers = new ShipperRepository(this.context);
         Suppliers = new SupplierRepository(this.context);
         Territories = new TerritoryRepository(this.context);
+        TurnoverPerCustomer = new SpRepository(this.context);
     }
     public IEmployeeRepository Employees { get; }
     public ICategoryRepository Categories { get; }
@@ -33,6 +34,7 @@ public class UnitOfWork : IUnitOfWork
     public IShipperRepository Shippers { get; }
     public ISupplierRepository Suppliers { get; }
     public ITerritoryRepository Territories { get; }
+    public ISpRepository TurnoverPerCustomer { get; }
 
     public async Task Complete()
     {

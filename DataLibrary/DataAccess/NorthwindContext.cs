@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using DataAccsessLibrary.Models;
 using DataLibrary.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
@@ -13,6 +14,8 @@ namespace DataLibrary.DataAccess
         {
         }
 
+        public virtual DbSet<TurnoverPerCustomer> TurnoverPerCustomers { get; set; }
+        public virtual DbSet<TurnoverOfEachCustomer> TurnoverOfEachCustomers { get; set; } = null!;
         public virtual DbSet<AlphabeticalListOfProduct> AlphabeticalListOfProducts { get; set; } = null!;
         public virtual DbSet<Category> Categories { get; set; } = null!;
         public virtual DbSet<CategorySalesFor1997> CategorySalesFor1997s { get; set; } = null!;
